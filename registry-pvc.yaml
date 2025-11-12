@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: image-registry-storage
+  namespace: openshift-image-registry
+spec:
+  accessModes:
+    # Use ReadWriteMany for the registry
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  # This is the correct class from your list
+  storageClassName: ocs-storagecluster-cephfs
